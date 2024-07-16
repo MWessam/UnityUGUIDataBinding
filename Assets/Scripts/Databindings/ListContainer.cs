@@ -38,14 +38,6 @@ namespace DataBinding
             _dataSource = ListWrapper<T>.Wrap(data);
             for (var i = 0; i < data.Count; i++)
             {
-                // var item = data[i];
-                // var dataType = data.GetType();
-                // var pool = _pools[dataType];
-                // var itemView = _pool.Get() as TView;
-                // var iCopy = i;
-                // itemView.Bind(item);
-                // // itemView.AddClickAction(AddClickAction<T, TView>(data[i], iCopy, itemView));
-                // _itemViews.Add(itemView);
                 if (_dataSource.TryGet<T>(i, out var item))
                 {
                     var itemType = item.GetType();
@@ -56,7 +48,6 @@ namespace DataBinding
                     {
                         _clickActions[itemType]?.DynamicInvoke(item,i1, itemView);
                     });
-                    itemView.transform.SetAsFirstSibling();
                     _instances.Add(itemView);
                 }
             }

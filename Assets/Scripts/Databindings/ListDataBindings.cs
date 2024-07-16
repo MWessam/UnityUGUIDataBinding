@@ -297,9 +297,6 @@ namespace DataBinding
             _pool.Enqueue(this);
         }
     }
-    /// <summary>
-    /// Wrapper class to encapsulate arbitiary data lists.
-    /// </summary>
     internal abstract class ListWrapper : ICollectionWrapper<int>, IDisposable
     {
         public bool IsEmpty => Count == 0;
@@ -317,10 +314,6 @@ namespace DataBinding
         public virtual void Dispose() { }
         public abstract IEnumerator GetEnumerator();
     }
-    /// <summary>
-    /// Wraps an arbitrary data structure with a key type of <see cref="TKey"/>
-    /// </summary>
-    /// <typeparam name="TKey"></typeparam>
     internal interface ICollectionWrapper<TKey> : ICollection
     {
         Type GetDataType(TKey key);
